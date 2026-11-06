@@ -1,0 +1,4 @@
+SELECT CAST('123456789012345678901234567890.1234567890' AS DECIMAL(40,10)) AS exact_amount,
+       CAST(9007199254740993 AS UNSIGNED) AS exact_integer,
+       '通用 MySQL 导出自检' AS sample_text, NULL AS null_value;
+SELECT 1 AS empty_column WHERE 1=0;

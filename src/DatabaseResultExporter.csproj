@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AssemblyName>DatabaseResultExporter</AssemblyName>
+    <Version>2.2.3</Version>
+    <Company>成都伍贰叁玖科技有限公司</Company>
+    <DebugType Condition="'$(Configuration)' == 'Release'">none</DebugType>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <StartupObject>SqlResultExporter.Program</StartupObject>
+    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
+    <PackageReference Include="MySqlConnector" Version="2.6.2" />
+    <PackageReference Include="Npgsql" Version="10.0.3" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.400" />
+    <PackageReference Include="MongoDB.Driver" Version="3.13.0" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
+  </ItemGroup>
+</Project>
