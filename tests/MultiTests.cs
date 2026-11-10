@@ -44,6 +44,7 @@ namespace SqlResultExporter {
    Application.EnableVisualStyles();Application.SetCompatibleTextRenderingDefault(false);
    count+=ProfileTests.Run(root);
    count+=ExcelImportTests.Run(root);
+   count+=KeywordSearchTests.Run(root);
    using(var f=new MainForm()){f.Show();Application.DoEvents();var db=(TextBox)typeof(MainForm).GetField("db",BindingFlags.Instance|BindingFlags.NonPublic).GetValue(f);Check(db.Text=="","empty database default");using(var bmp=new Bitmap(f.Width,f.Height)){f.DrawToBitmap(bmp,new Rectangle(Point.Empty,bmp.Size));bmp.Save(Path.Combine(root,"window.png"));}f.Hide();}
    typeof(WorkflowTest).GetMethod("Main",BindingFlags.Static|BindingFlags.NonPublic).Invoke(null,new object[]{new[]{Path.Combine(root,"workflow")}});
    Check(File.Exists(Path.Combine(root,"workflow","workflow.ok.txt")),"inherited drag/output workflow");

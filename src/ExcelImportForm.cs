@@ -325,8 +325,9 @@ internal sealed partial class MainForm
 {
     private void AddHeader(TableLayoutPanel root, Label title)
     {
-        var heading = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1, Margin = Padding.Empty };
+        var heading = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 4, RowCount = 1, Margin = Padding.Empty };
         heading.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+        heading.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
         heading.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 188));
         heading.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
         var launch = new AppButton { Text = "Excel 导入（SQL Server）", Dock = DockStyle.Top, Height = 33 };
@@ -346,9 +347,23 @@ internal sealed partial class MainForm
         };
         var about = new AppButton { Text = "关于", Dock = DockStyle.Top, Height = 33 };
         about.Click += (sender, args) => ShowAbout();
+        var find = new AppButton { Text = "关键字查找", Dock = DockStyle.Top, Height = 33 };
+        find.Click += (sender, args) =>
+        {
+            if (cancellation != null) return;
+            string settings;
+            try { settings = Connection(); }
+            catch (Exception ex) { MessageBox.Show(this, ex.Message, "请检查连接信息"); return; }
+            using var dialog = new KeywordSearchForm(new Options
+            {
+                Kind = Kind, ConnectionString = settings, Timeout = (int)timeout.Value
+            }, Log);
+            dialog.ShowDialog(this);
+        };
         heading.Controls.Add(title, 0, 0);
-        heading.Controls.Add(launch, 1, 0);
-        heading.Controls.Add(about, 2, 0);
+        heading.Controls.Add(find, 1, 0);
+        heading.Controls.Add(launch, 2, 0);
+        heading.Controls.Add(about, 3, 0);
         root.Controls.Add(heading);
     }
 

@@ -6,7 +6,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <AssemblyName>DatabaseResultExporter</AssemblyName>
-    <Version>2.2.3</Version>
+    <Version>2.3.0</Version>
     <Company>成都伍贰叁玖科技有限公司</Company>
     <DebugType Condition="'$(Configuration)' == 'Release'">none</DebugType>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
